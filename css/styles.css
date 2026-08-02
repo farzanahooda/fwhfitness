@@ -214,11 +214,21 @@ section:not([class]):nth-of-type(even) {
   transition: opacity 0.3s ease;
 }
 
+/* Default header sits over a dark background (subpage hero bands) */
 .brand-mark .logo-dark {
-  opacity: 1;
+  opacity: 0;
 }
 
 .brand-mark .logo-light {
+  opacity: 1;
+}
+
+/* Homepage header sits over the light cream hero, so it needs dark branding by default */
+.site-header.on-light .brand-mark .logo-dark {
+  opacity: 1;
+}
+
+.site-header.on-light .brand-mark .logo-light {
   opacity: 0;
 }
 
@@ -239,9 +249,13 @@ section:not([class]):nth-of-type(even) {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 1.25rem;
-  color: var(--teal);
+  color: var(--white);
   letter-spacing: 0.08em;
   transition: color 0.3s ease;
+}
+
+.site-header.on-light .brand-text {
+  color: var(--teal);
 }
 
 .site-header.is-scrolled .brand-text {
@@ -258,11 +272,15 @@ section:not([class]):nth-of-type(even) {
 }
 
 .nav-links a {
-  font-size: 0.86rem;
+  font-size: 0.94rem;
   letter-spacing: 0.03em;
-  color: var(--charcoal);
+  color: var(--white);
   transition: color 0.3s ease;
   position: relative;
+}
+
+.site-header.on-light .nav-links a {
+  color: var(--charcoal);
 }
 
 .site-header.is-scrolled .nav-links a {
@@ -271,6 +289,10 @@ section:not([class]):nth-of-type(even) {
 
 .nav-links a:hover {
   color: var(--gold-light);
+}
+
+.site-header.on-light .nav-links a:hover {
+  color: var(--gold);
 }
 
 .site-header.is-scrolled .nav-links a:hover {
@@ -296,9 +318,13 @@ section:not([class]):nth-of-type(even) {
   display: block;
   width: 26px;
   height: 2px;
-  background: var(--charcoal);
+  background: var(--white);
   margin: 5px 0;
   transition: all 0.3s ease;
+}
+
+.site-header.on-light .nav-toggle span {
+  background: var(--charcoal);
 }
 
 .site-header.is-scrolled .nav-toggle span {
@@ -414,19 +440,23 @@ section:not([class]):nth-of-type(even) {
 
 .hero .eyebrow {
   color: var(--gold-deep);
+  text-shadow: 0 0 14px rgba(245, 236, 221, 0.95), 0 0 4px rgba(245, 236, 221, 0.95);
 }
 
 .hero h1 {
   color: var(--teal);
   font-size: clamp(2.4rem, 6vw, 4rem);
   margin-bottom: 0.4em;
+  text-shadow: 0 0 24px rgba(245, 236, 221, 0.9), 0 0 10px rgba(245, 236, 221, 0.9);
 }
 
 .hero p.lede {
   font-size: 1.15rem;
-  color: var(--charcoal-soft);
+  font-weight: 500;
+  color: var(--charcoal);
   max-width: 560px;
   margin: 0 auto 2rem;
+  text-shadow: 0 0 18px rgba(245, 236, 221, 0.95), 0 0 6px rgba(245, 236, 221, 0.95);
 }
 
 .hero-actions {
