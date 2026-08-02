@@ -368,7 +368,7 @@ section:not([class]):nth-of-type(even) {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(245, 236, 221, 0.62), rgba(245, 236, 221, 0.48));
+  background: linear-gradient(180deg, rgba(245, 236, 221, 0.88), rgba(245, 236, 221, 0.74));
 }
 
 .hero-nav {
@@ -440,23 +440,19 @@ section:not([class]):nth-of-type(even) {
 
 .hero .eyebrow {
   color: var(--gold-deep);
-  text-shadow: 0 0 14px rgba(245, 236, 221, 0.95), 0 0 4px rgba(245, 236, 221, 0.95);
 }
 
 .hero h1 {
   color: var(--teal);
   font-size: clamp(2.4rem, 6vw, 4rem);
   margin-bottom: 0.4em;
-  text-shadow: 0 0 24px rgba(245, 236, 221, 0.9), 0 0 10px rgba(245, 236, 221, 0.9);
 }
 
 .hero p.lede {
   font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--charcoal);
+  color: var(--charcoal-soft);
   max-width: 560px;
   margin: 0 auto 2rem;
-  text-shadow: 0 0 18px rgba(245, 236, 221, 0.95), 0 0 6px rgba(245, 236, 221, 0.95);
 }
 
 .hero-actions {
