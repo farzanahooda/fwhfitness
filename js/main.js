@@ -120,7 +120,7 @@ const testimonials = [
     slug: "lisa-maniatis",
   },
   {
-    quote: "From day one she was incredibly supportive and attentive, tailoring a holistic program that went beyond just physical exercise. A trainer who truly cares about your wellbeing.",
+    quote: "If you're looking for a trainer who truly cares about your well-being and provides comprehensive, compassionate guidance, and a programme that truly works, this is the one. Thank you Farzana for everything you've done so far and continue to do for me, you're a star",
     name: "Farhana Manekia",
     slug: "farhana-manekia",
   },
@@ -128,6 +128,11 @@ const testimonials = [
     quote: "Amazing personal and thoughtful coaching by our excellent Farzana, who does this with great passion. We are so lucky to have you.",
     name: "Fatim Jaffer",
     slug: "fatim-jaffer",
+  },
+  {
+    quote: "I contacted Farzana - she has changed everything. Every aspect of my health has been addressed through nutrition, exercise and mental wellbeing. I am healthier, leaner and stronger than I have been in years.",
+    name: "Catherine Wimble",
+    slug: "catherine-wimble",
   },
 ];
 
