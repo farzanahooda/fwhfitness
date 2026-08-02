@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#efe6d6"/>
+      <stop offset="100%" stop-color="#f5d06a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg2)"/>
+  <g fill="none" stroke="#01454c" stroke-width="1.4" opacity="0.5">
+    <circle cx="400" cy="430" r="180"/>
+    <circle cx="400" cy="430" r="215"/>
+  </g>
+  <text x="400" y="440" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#01454c" opacity="0.55">Farzana</text>
+  <text x="400" y="475" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="2" fill="#01454c" opacity="0.5">PHOTO PLACEHOLDER</text>
+</svg>
