@@ -1209,13 +1209,13 @@ section:not([class]):nth-of-type(even) {
    ========================================================================== */
 
 .story-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: start;
+  columns: 3;
+  column-gap: 24px;
 }
 
 .story-card {
+  break-inside: avoid;
+  margin-bottom: 24px;
   scroll-margin-top: 110px;
   background: var(--white);
   border: 1px solid rgba(1, 69, 76, 0.08);
@@ -1259,7 +1259,7 @@ section:not([class]):nth-of-type(even) {
   }
 
   .story-grid {
-    grid-template-columns: repeat(2, 1fr);
+    columns: 2;
   }
 }
 
@@ -1319,6 +1319,6 @@ section:not([class]):nth-of-type(even) {
   }
 
   .story-grid {
-    grid-template-columns: 1fr;
+    columns: 1;
   }
 }

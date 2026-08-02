@@ -145,3 +145,23 @@ if (grid) {
     )
     .join("");
 }
+
+// Correct anchor-link scrolling into multi-column layouts (e.g. success-stories.html),
+// where the browser's native fragment scroll can land on the wrong element.
+if (window.location.hash) {
+  const target = document.querySelector(window.location.hash);
+  if (target) {
+    const fixScroll = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: "instant", block: "start" });
+        });
+      });
+    };
+    if (document.readyState === "complete") {
+      fixScroll();
+    } else {
+      window.addEventListener("load", fixScroll);
+    }
+  }
+}
