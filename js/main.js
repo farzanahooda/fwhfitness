@@ -75,44 +75,59 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // Testimonials - edit this list to add, remove or swap out reviews.
 const testimonials = [
   {
-    quote: "A great experience. Farzana is incredibly motivating and empowering. I felt like I had a great workout as well as emotional support.",
-    name: "Zoe Hameer",
+    quote: "Farzana is more than just an amazing, inspirational trainer - she's been my nutritionist, life coach, therapist and cheerleader. The best investment ever.",
+    name: "Liz Burchett",
+    slug: "liz-burchett",
   },
   {
-    quote: "If you're feeling stuck at a plateau with your weight loss, or just need accountability and encouragement, I'd really recommend giving this a go.",
-    name: "Madiha",
+    quote: "Her ability to make you feel super welcome is second to none, as is her knowledge and insight with both exercise and nutrition. She genuinely cares about her clients and it shows.",
+    name: "Stephanie Downes",
+    slug: "stephanie-downes",
   },
   {
-    quote: "Every aspect of my health has been addressed. I am healthier, leaner and stronger than I have been in years. My peri-menopausal symptoms have reduced so much.",
-    name: "Catherine Wimble",
+    quote: "Farzana's workshop exceeded all of my expectations - the wealth of knowledge and the beautiful, intentional group setting made it such an enjoyable experience.",
+    name: "Nicola",
+    slug: "nicola",
   },
   {
-    quote: "I've learned an immense amount about gut health from her. I've learned to love exercise again and not stress about what my body looks like but how strong it feels.",
-    name: "Sabira Patel",
+    quote: "Farzana is gentle and encouraging whilst understanding you as an individual. Her extensive knowledge of nutrition has resulted in my diabetes levels reducing significantly.",
+    name: "Joy Godbold",
+    slug: "joy-godbold",
   },
   {
-    quote: "My pain levels reduced dramatically, my IBS symptoms improved quickly, and I started losing weight. I dropped a dress size in my 6 week plan.",
-    name: "Sidika Hudda",
+    quote: "Farzana is not just a fitness instructor - she's a true physical, mental and spiritual coach. Meeting and working with her was one of the best decisions I've ever made.",
+    name: "Maryam Mohseini",
+    slug: "maryam-mohseini",
   },
   {
-    quote: "Through my 1-2-1 plan, I have lost weight, gained mobility and strength in both mind and body.",
-    name: "Jane Cooney",
+    quote: "A passionate, compassionate trainer who understands the real life struggles you face, plus a community of supportive females. Laughter, friendship and warmth - a stellar combination.",
+    name: "Sajida Jaffer",
+    slug: "sajida-jaffer",
   },
   {
-    quote: "She tailored a holistic program that went beyond just physical exercise. I am now conscious of everything I eat and wanting to nourish my body from the inside out. No deprivation!",
+    quote: "Farzana is a superb coach who offers so much support. She really pushes you in training to get the best out of you, and her sessions are always fun!",
+    name: "Abi Needham",
+    slug: "abi-needham",
+  },
+  {
+    quote: "A constant font of knowledge on all things health, wellbeing and nutrition - the kindest, most nurturing and genuine person one could ever wish to meet.",
+    name: "Rebecca Payne-Shelley",
+    slug: "rebecca-payne-shelley",
+  },
+  {
+    quote: "Simply delightful in every way. The food was delicious, the energy was warm and welcoming, and I've left with an abundance of knowledge for my diet and lifestyle.",
+    name: "Lisa Maniatis",
+    slug: "lisa-maniatis",
+  },
+  {
+    quote: "From day one she was incredibly supportive and attentive, tailoring a holistic program that went beyond just physical exercise. A trainer who truly cares about your wellbeing.",
     name: "Farhana Manekia",
+    slug: "farhana-manekia",
   },
   {
-    quote: "She prepares a veritable feast of homemade foods. It made me feel empowered to start making changes at home.",
-    name: "Stefanie Read",
-  },
-  {
-    quote: "I loved her holistic approach - it wasn't just about lifting weights, but about understanding nutrition and building a healthy mindset one small habit at a time.",
-    name: "Arwa",
-  },
-  {
-    quote: "I've become stronger, fitter and much more nutritionally savvy! With online support outside of the session, it helps so much with keeping me on track.",
-    name: "Maria Clarke",
+    quote: "Amazing personal and thoughtful coaching by our excellent Farzana, who does this with great passion. We are so lucky to have you.",
+    name: "Fatim Jaffer",
+    slug: "fatim-jaffer",
   },
 ];
 
@@ -123,8 +138,9 @@ if (grid) {
       (t) => `
       <div class="testimonial-card">
         <span class="quote-mark">&ldquo;</span>
-        <p>${t.quote}</p>
+        <p>${t.quote}&hellip;</p>
         <span class="name">${t.name}</span>
+        <a href="success-stories.html#${t.slug}" class="testimonial-link">Find Out More</a>
       </div>`
     )
     .join("");

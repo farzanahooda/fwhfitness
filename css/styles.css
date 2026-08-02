@@ -201,8 +201,8 @@ section:not([class]):nth-of-type(even) {
 
 .brand-mark {
   position: relative;
-  height: 52px;
-  width: 52px;
+  height: 66px;
+  width: 66px;
   transition: height 0.3s ease, width 0.3s ease;
 }
 
@@ -233,8 +233,8 @@ section:not([class]):nth-of-type(even) {
 }
 
 .site-header.is-scrolled .brand-mark {
-  height: 44px;
-  width: 44px;
+  height: 56px;
+  width: 56px;
 }
 
 .site-header.is-scrolled .brand-mark .logo-dark {
@@ -246,11 +246,11 @@ section:not([class]):nth-of-type(even) {
 }
 
 .brand-text {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.55rem;
   color: var(--white);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   transition: color 0.3s ease;
 }
 
@@ -548,8 +548,8 @@ section:not([class]):nth-of-type(even) {
 .service-card {
   background: var(--ivory);
   border: 1px solid rgba(1, 69, 76, 0.08);
-  padding: 2.4rem 2rem;
   border-radius: var(--radius);
+  overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
@@ -557,6 +557,22 @@ section:not([class]):nth-of-type(even) {
   transform: translateY(-4px);
   box-shadow: var(--shadow);
   border-color: var(--gold);
+}
+
+.service-card-img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--champagne);
+}
+
+.service-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-card-body {
+  padding: 2rem 1.7rem 2.2rem;
 }
 
 .service-card .num {
@@ -643,6 +659,34 @@ section:not([class]):nth-of-type(even) {
   font-size: 1rem;
   color: var(--gold-light);
   letter-spacing: 0.02em;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-card .name {
+  margin-bottom: 0.9em;
+}
+
+.testimonial-link {
+  display: inline-block;
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(245, 208, 106, 0.6);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.testimonial-link:hover {
+  color: var(--white);
+  border-color: var(--white);
 }
 
 /* Newsletter
