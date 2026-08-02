@@ -97,8 +97,8 @@ section {
   padding: 5.5rem 0;
 }
 
-section:not([class]):nth-of-type(even) {
-  background: var(--white);
+section:not([class]) {
+  background: var(--ivory);
 }
 
 .divider {
@@ -520,7 +520,7 @@ section:not([class]):nth-of-type(even) {
 }
 
 .service-card {
-  background: var(--ivory);
+  background: var(--white);
   border: 1px solid rgba(1, 69, 76, 0.08);
   padding: 2.4rem 2rem;
   border-radius: var(--radius);
