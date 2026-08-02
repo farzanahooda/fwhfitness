@@ -95,6 +95,7 @@ p {
 
 section {
   padding: 5.5rem 0;
+  scroll-margin-top: 90px;
 }
 
 section:not([class]):nth-of-type(even) {
@@ -1208,13 +1209,14 @@ section:not([class]):nth-of-type(even) {
    ========================================================================== */
 
 .story-grid {
-  columns: 3;
-  column-gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
 }
 
 .story-card {
-  break-inside: avoid;
-  margin-bottom: 24px;
+  scroll-margin-top: 110px;
   background: var(--white);
   border: 1px solid rgba(1, 69, 76, 0.08);
   border-left: 3px solid var(--gold);
@@ -1257,7 +1259,7 @@ section:not([class]):nth-of-type(even) {
   }
 
   .story-grid {
-    columns: 2;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1317,6 +1319,6 @@ section:not([class]):nth-of-type(even) {
   }
 
   .story-grid {
-    columns: 1;
+    grid-template-columns: 1fr;
   }
 }
