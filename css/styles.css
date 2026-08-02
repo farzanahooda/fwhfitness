@@ -342,7 +342,7 @@ section:not([class]):nth-of-type(even) {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(245, 236, 221, 0.88), rgba(245, 236, 221, 0.74));
+  background: linear-gradient(180deg, rgba(245, 236, 221, 0.62), rgba(245, 236, 221, 0.48));
 }
 
 .hero-nav {
