@@ -1266,6 +1266,10 @@ section:not([class]):nth-of-type(even) {
     padding: 3.8rem 0;
   }
 
+  .hero-nav {
+    display: none;
+  }
+
   .nav-toggle {
     display: block;
   }
