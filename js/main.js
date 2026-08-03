@@ -70,6 +70,61 @@ if (navToggle && navLinks) {
   });
 }
 
+// Free guide modal
+const guideModal = document.getElementById("guideModal");
+if (guideModal) {
+  const modalTitle = document.getElementById("guideModalTitle");
+  const modalSubtitle = document.getElementById("guideModalSubtitle");
+  const guideFieldValue = document.getElementById("guideFieldValue");
+  const guideForm = document.getElementById("guideForm");
+  const guideSuccess = document.getElementById("guideModalSuccess");
+
+  const openGuideModal = (guideName) => {
+    guideForm.hidden = false;
+    guideSuccess.hidden = true;
+    guideForm.reset();
+    modalTitle.textContent = `Get the ${guideName}`;
+    modalSubtitle.textContent = "Enter your details and I'll email you the guide.";
+    guideFieldValue.value = guideName;
+    guideModal.classList.add("is-open");
+    guideModal.setAttribute("aria-hidden", "false");
+  };
+
+  const closeGuideModal = () => {
+    guideModal.classList.remove("is-open");
+    guideModal.setAttribute("aria-hidden", "true");
+  };
+
+  document.querySelectorAll(".free-guide-btn").forEach((btn) => {
+    btn.addEventListener("click", () => openGuideModal(btn.dataset.guide));
+  });
+
+  guideModal.querySelectorAll("[data-close-modal]").forEach((el) => {
+    el.addEventListener("click", closeGuideModal);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && guideModal.classList.contains("is-open")) closeGuideModal();
+  });
+
+  guideForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(guideForm);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(() => {
+        guideForm.hidden = true;
+        guideSuccess.hidden = false;
+      })
+      .catch(() => {
+        alert("Something went wrong - please try again or email farzana@fwhfitness.com directly.");
+      });
+  });
+}
+
 // Footer year
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();

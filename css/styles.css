@@ -1209,6 +1209,109 @@ section:not([class]):nth-of-type(even) {
   color: var(--charcoal-soft);
 }
 
+.free-resource-grid {
+  margin-bottom: 1rem;
+}
+
+.free-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+  text-align: center;
+}
+
+.resource-card .resource-cover.free-cover--teal {
+  background: var(--teal);
+}
+
+.resource-card .resource-cover.free-cover--gold {
+  background: linear-gradient(155deg, var(--gold-light), var(--gold));
+}
+
+.resource-card .resource-cover.free-cover--ivory {
+  background: var(--champagne);
+  border-bottom: 3px solid var(--gold);
+}
+
+.free-cover-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.free-cover--teal .free-cover-title,
+.free-cover--gold .free-cover-title {
+  color: var(--white);
+}
+
+.free-cover--ivory .free-cover-title {
+  color: var(--teal);
+}
+
+/* Free guide modal
+   ========================================================================== */
+
+.guide-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.guide-modal.is-open {
+  display: flex;
+}
+
+.guide-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(36, 34, 32, 0.55);
+}
+
+.guide-modal-panel {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2.2rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: left;
+  box-shadow: var(--shadow);
+}
+
+.guide-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--charcoal-soft);
+}
+
+.guide-modal-panel h3 {
+  margin-bottom: 0.3em;
+}
+
+.guide-modal-panel > p {
+  color: var(--charcoal-soft);
+  font-size: 0.92rem;
+  margin-bottom: 1.3em;
+}
+
+.guide-modal-success {
+  color: var(--teal);
+  font-weight: 600;
+}
+
 /* Success stories archive
    ========================================================================== */
 
