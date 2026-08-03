@@ -270,15 +270,20 @@ section:not([class]):nth-of-type(even) {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.nav-links li {
+  flex-shrink: 0;
+}
+
 .nav-links a {
-  font-size: 0.94rem;
-  letter-spacing: 0.03em;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
   color: var(--white);
   transition: color 0.3s ease;
   position: relative;
