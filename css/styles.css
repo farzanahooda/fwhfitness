@@ -1218,8 +1218,8 @@ section:not([class]):nth-of-type(even) {
   margin-bottom: 1rem;
 }
 
-.free-resource-grid .resource-card .resource-cover img {
-  object-fit: contain;
+.free-resource-grid .resource-card .resource-cover {
+  aspect-ratio: 4 / 3;
 }
 
 .free-cover {
