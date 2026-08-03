@@ -1276,6 +1276,10 @@ section:not([class]):nth-of-type(even) {
     display: none;
   }
 
+  .site-header {
+    transform: none;
+  }
+
   .nav-toggle {
     display: block;
   }
