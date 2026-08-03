@@ -59,11 +59,13 @@ if (navToggle && navLinks) {
   navToggle.addEventListener("click", () => {
     const isOpen = navLinks.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", isOpen);
+    header.classList.toggle("nav-open", isOpen);
   });
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("is-open");
       navToggle.setAttribute("aria-expanded", "false");
+      header.classList.remove("nav-open");
     });
   });
 }

@@ -188,6 +188,10 @@ section:not([class]):nth-of-type(even) {
   padding: 12px 0;
 }
 
+.site-header.nav-open {
+  transform: none;
+}
+
 .site-header .container {
   display: flex;
   align-items: center;
