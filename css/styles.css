@@ -1288,13 +1288,11 @@ section:not([class]):nth-of-type(even) {
     justify-content: center;
     gap: 28px;
     transform: translateY(-100%);
-    opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.28s ease;
   }
 
   .nav-links.is-open {
     transform: translateY(0);
-    opacity: 1;
   }
 
   .nav-links a {
