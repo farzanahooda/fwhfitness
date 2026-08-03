@@ -1289,7 +1289,7 @@ section:not([class]):nth-of-type(even) {
     gap: 28px;
     transform: translateY(-100%);
     opacity: 0;
-    transition: transform 0.35s ease, opacity 0.35s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
   .nav-links.is-open {
@@ -1300,6 +1300,35 @@ section:not([class]):nth-of-type(even) {
   .nav-links a {
     color: var(--white);
     font-size: 1.15rem;
+  }
+
+  .site-header.nav-open {
+    transition: none;
+  }
+
+  .site-header.nav-open .brand {
+    position: relative;
+    z-index: 105;
+  }
+
+  .site-header.nav-open .brand-mark .logo-dark {
+    opacity: 0 !important;
+  }
+
+  .site-header.nav-open .brand-mark .logo-light {
+    opacity: 1 !important;
+  }
+
+  .site-header.nav-open .brand-text {
+    color: var(--white) !important;
+  }
+
+  .site-header.nav-open .nav-toggle span {
+    background: var(--white) !important;
+  }
+
+  .site-header.nav-open .nav-links a {
+    color: var(--white) !important;
   }
 
   .services-grid,
