@@ -1267,14 +1267,21 @@ section:not([class]):nth-of-type(even) {
   position: fixed;
   inset: 0;
   z-index: 200;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
 .guide-modal.is-open {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
 .guide-modal-backdrop {
@@ -1292,6 +1299,12 @@ section:not([class]):nth-of-type(even) {
   width: 100%;
   text-align: left;
   box-shadow: var(--shadow);
+  transform: translateY(28px) scale(0.96);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.guide-modal.is-open .guide-modal-panel {
+  transform: translateY(0) scale(1);
 }
 
 .guide-modal-close {
