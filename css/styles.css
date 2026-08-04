@@ -1219,7 +1219,7 @@ section:not([class]):nth-of-type(even) {
 }
 
 .free-resource-grid .resource-card .resource-cover {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1131 / 1600;
 }
 
 .free-cover {
