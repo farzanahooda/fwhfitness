@@ -1222,6 +1222,14 @@ section:not([class]):nth-of-type(even) {
   aspect-ratio: 1131 / 1600;
 }
 
+.free-resource-grid .resource-card .resource-cover.resource-cover--fit {
+  background: var(--champagne);
+}
+
+.free-resource-grid .resource-card .resource-cover.resource-cover--fit img {
+  object-fit: contain;
+}
+
 .free-cover {
   display: flex;
   align-items: center;
