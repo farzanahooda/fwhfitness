@@ -108,6 +108,7 @@ const MAILCHIMP_ID = "2603f2cdde";
 const MAILCHIMP_TAGS = {
   "Smoothie Guide": "14568946",
   "Habit Tracker": "14568947",
+  "Ramadhan Guide": "14568950",
 };
 
 const subscribeToMailchimp = (email, tagId) => {
