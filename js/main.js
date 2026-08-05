@@ -102,6 +102,37 @@ if (contactForm && contactSuccess) {
   submitFormInline(contactForm, contactSuccess);
 }
 
+// Mailchimp JSONP subscribe (bypasses CORS, no page navigation)
+const MAILCHIMP_U = "7971fbcca33355c07e3bf1b6a";
+const MAILCHIMP_ID = "2603f2cdde";
+const MAILCHIMP_TAGS = {
+  "Smoothie Guide": "14568946",
+};
+
+const subscribeToMailchimp = (email, tagId) => {
+  return new Promise((resolve, reject) => {
+    const callbackName = "mcJsonp" + Date.now();
+    window[callbackName] = (data) => {
+      delete window[callbackName];
+      script.remove();
+      if (data && data.result === "success") resolve(data);
+      else reject(data);
+    };
+    const params = new URLSearchParams({
+      u: MAILCHIMP_U,
+      id: MAILCHIMP_ID,
+      EMAIL: email,
+      tags: tagId,
+      c: callbackName,
+    });
+    params.set(`b_${MAILCHIMP_U}_${MAILCHIMP_ID}`, "");
+    const script = document.createElement("script");
+    script.src = `https://fwhfitness.us10.list-manage.com/subscribe/post-json?${params.toString()}`;
+    script.onerror = () => reject(new Error("Mailchimp request failed"));
+    document.body.appendChild(script);
+  });
+};
+
 // Free guide modal
 const guideModal = document.getElementById("guideModal");
 if (guideModal) {
@@ -142,11 +173,21 @@ if (guideModal) {
   guideForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const data = new FormData(guideForm);
-    fetch("/", {
+    const email = data.get("email");
+    const guideName = guideFieldValue.value;
+    const tagId = MAILCHIMP_TAGS[guideName];
+
+    const netlifySubmit = fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(data).toString(),
-    })
+    });
+
+    const mailchimpSubmit = tagId
+      ? subscribeToMailchimp(email, tagId)
+      : Promise.resolve();
+
+    Promise.all([netlifySubmit, mailchimpSubmit])
       .then(() => {
         guideForm.hidden = true;
         guideSuccess.hidden = false;
