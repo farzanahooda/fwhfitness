@@ -70,6 +70,38 @@ if (navToggle && navLinks) {
   });
 }
 
+// AJAX form submission (no page navigation)
+const submitFormInline = (form, successEl) => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(() => {
+        form.hidden = true;
+        successEl.hidden = false;
+      })
+      .catch(() => {
+        alert("Something went wrong - please try again or email farzana@fwhfitness.com directly.");
+      });
+  });
+};
+
+const newsletterForm = document.getElementById("newsletterForm");
+const newsletterSuccess = document.getElementById("newsletterSuccess");
+if (newsletterForm && newsletterSuccess) {
+  submitFormInline(newsletterForm, newsletterSuccess);
+}
+
+const contactForm = document.getElementById("contactForm");
+const contactSuccess = document.getElementById("contactSuccess");
+if (contactForm && contactSuccess) {
+  submitFormInline(contactForm, contactSuccess);
+}
+
 // Free guide modal
 const guideModal = document.getElementById("guideModal");
 if (guideModal) {
