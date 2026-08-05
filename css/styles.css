@@ -729,16 +729,15 @@ section:not([class]):nth-of-type(even) {
 .form-success {
   max-width: 460px;
   margin: 0 auto;
-  padding: 1.1em 1.4em;
-  background: var(--white);
-  border: 1px solid rgba(1, 69, 76, 0.15);
-  border-radius: var(--radius);
   color: var(--teal);
   font-weight: 600;
 }
 
 .contact-form-success {
+  max-width: none;
   padding: 2.6rem;
+  background: var(--white);
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
