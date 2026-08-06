@@ -111,6 +111,7 @@ const MAILCHIMP_TAGS = {
   "Ramadhan Guide": "14568950",
   "Nutrition Guide": "14568949",
   "Nutrition Tips for Sustainable Fat Loss": "14568955",
+  "Recipe Guide Volume 1": "14568957",
 };
 
 const subscribeToMailchimp = (email, tagId) => {
