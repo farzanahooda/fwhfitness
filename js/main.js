@@ -113,6 +113,7 @@ const MAILCHIMP_TAGS = {
   "Nutrition Tips for Sustainable Fat Loss": "14568955",
   "Recipe Guide Volume 1": "14568957",
   "The Ultimate Energy Ball Recipe Guide": "14568959",
+  "Recipe Guide Volume 2": "14568958",
 };
 
 const subscribeToMailchimp = (email, tagId) => {
