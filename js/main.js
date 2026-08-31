@@ -90,12 +90,6 @@ const submitFormInline = (form, successEl) => {
   });
 };
 
-const newsletterForm = document.getElementById("newsletterForm");
-const newsletterSuccess = document.getElementById("newsletterSuccess");
-if (newsletterForm && newsletterSuccess) {
-  submitFormInline(newsletterForm, newsletterSuccess);
-}
-
 const contactForm = document.getElementById("contactForm");
 const contactSuccess = document.getElementById("contactSuccess");
 if (contactForm && contactSuccess) {
@@ -129,9 +123,9 @@ const subscribeToMailchimp = (email, tagId) => {
       u: MAILCHIMP_U,
       id: MAILCHIMP_ID,
       EMAIL: email,
-      tags: tagId,
       c: callbackName,
     });
+    if (tagId) params.set("tags", tagId);
     params.set(`b_${MAILCHIMP_U}_${MAILCHIMP_ID}`, "");
     const script = document.createElement("script");
     script.src = `https://fwhfitness.us10.list-manage.com/subscribe/post-json?${params.toString()}`;
@@ -139,6 +133,34 @@ const subscribeToMailchimp = (email, tagId) => {
     document.body.appendChild(script);
   });
 };
+
+// Newsletter subscribe (Netlify Forms + Mailchimp main audience, no tag)
+const newsletterForm = document.getElementById("newsletterForm");
+const newsletterSuccess = document.getElementById("newsletterSuccess");
+if (newsletterForm && newsletterSuccess) {
+  newsletterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(newsletterForm);
+    const email = data.get("email");
+
+    const netlifySubmit = fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    });
+
+    const mailchimpSubmit = subscribeToMailchimp(email);
+
+    Promise.all([netlifySubmit, mailchimpSubmit])
+      .then(() => {
+        newsletterForm.hidden = true;
+        newsletterSuccess.hidden = false;
+      })
+      .catch(() => {
+        alert("Something went wrong - please try again or email farzana@fwhfitness.com directly.");
+      });
+  });
+}
 
 // Free guide modal
 const guideModal = document.getElementById("guideModal");
