@@ -185,14 +185,15 @@ if (newsletterForm && newsletterSuccess) {
 
     const mailchimpSubmit = subscribeToMailchimp(email);
 
-    Promise.all([netlifySubmit, mailchimpSubmit])
-      .then(() => {
-        newsletterForm.hidden = true;
-        newsletterSuccess.hidden = false;
-      })
-      .catch(() => {
-        alert("Something went wrong - please try again or email farzana@fwhfitness.com directly.");
-      });
+    // Same hang risk as the guide form, and the usual Mailchimp rejections
+    // here ("already subscribed", rate limited) aren't things the visitor can
+    // act on - so confirm either way rather than leaving them stuck or alarmed.
+    const settled = Promise.allSettled([netlifySubmit, mailchimpSubmit]);
+    const timeout = new Promise((resolve) => setTimeout(resolve, 4000));
+    Promise.race([settled, timeout]).then(() => {
+      newsletterForm.hidden = true;
+      newsletterSuccess.hidden = false;
+    });
   });
 }
 
