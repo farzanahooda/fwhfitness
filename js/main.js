@@ -124,6 +124,19 @@ const MAILCHIMP_TAGS = {
   "Recipe Guide Volume 2": "14568958",
 };
 
+// Free guides are delivered instantly on the page rather than by email, so
+// delivery never depends on a confirmation click or an email reaching the inbox.
+const GUIDE_FILES = {
+  "Nutrition Tips for Sustainable Fat Loss": "assets/guides/sustainable-fat-loss.pdf",
+  "Nutrition Guide": "assets/guides/nutrition-guide.pdf",
+  "The Ultimate Energy Ball Recipe Guide": "assets/guides/energy-ball-guide.pdf",
+  "Ramadhan Guide": "assets/guides/ramadhan-guide.pdf",
+  "Recipe Guide Volume 1": "assets/guides/recipe-guide-vol1.pdf",
+  "Recipe Guide Volume 2": "assets/guides/recipe-guide-vol2.pdf",
+  "Habit Tracker": "assets/guides/habit-tracker.pdf",
+  "Smoothie Guide": "assets/guides/smoothie-guide.pdf",
+};
+
 const subscribeToMailchimp = (email, tagId) => {
   return new Promise((resolve, reject) => {
     const callbackName = "mcJsonp" + Date.now();
@@ -191,13 +204,25 @@ if (guideModal) {
   const guideFieldValue = document.getElementById("guideFieldValue");
   const guideForm = document.getElementById("guideForm");
   const guideSuccess = document.getElementById("guideModalSuccess");
+  const guideDownloadLink = document.getElementById("guideDownloadLink");
+
+  // Reveal the guide regardless of what Mailchimp does - the download is the
+  // promise we made, and a failed signup shouldn't withhold it.
+  const revealGuide = (guideName) => {
+    const fileUrl = GUIDE_FILES[guideName];
+    if (fileUrl && guideDownloadLink) guideDownloadLink.href = fileUrl;
+    guideForm.hidden = true;
+    modalSubtitle.hidden = true;
+    guideSuccess.hidden = false;
+  };
 
   const openGuideModal = (guideName) => {
     guideForm.hidden = false;
     guideSuccess.hidden = true;
+    modalSubtitle.hidden = false;
     guideForm.reset();
     modalTitle.textContent = `Get the ${guideName}`;
-    modalSubtitle.textContent = "Enter your details and I'll email you the guide.";
+    modalSubtitle.textContent = "Pop in your details and your guide is yours to download straight away.";
     guideFieldValue.value = guideName;
     guideModal.classList.add("is-open");
     guideModal.setAttribute("aria-hidden", "false");
@@ -223,15 +248,15 @@ if (guideModal) {
   guideForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    const guideName = guideFieldValue.value;
+
     if (looksAutomated(guideForm)) {
-      guideForm.hidden = true;
-      guideSuccess.hidden = false;
+      revealGuide(guideName);
       return;
     }
 
     const data = new FormData(guideForm);
     const email = data.get("email");
-    const guideName = guideFieldValue.value;
     const tagId = MAILCHIMP_TAGS[guideName];
 
     const netlifySubmit = fetch("/", {
@@ -244,14 +269,11 @@ if (guideModal) {
       ? subscribeToMailchimp(email, tagId)
       : Promise.resolve();
 
-    Promise.all([netlifySubmit, mailchimpSubmit])
-      .then(() => {
-        guideForm.hidden = true;
-        guideSuccess.hidden = false;
-      })
-      .catch(() => {
-        alert("Something went wrong - please try again or email farzana@fwhfitness.com directly.");
-      });
+    // Mailchimp's JSONP call can hang indefinitely (it does when rate-limited),
+    // so never let it hold the download hostage - reveal after 4s regardless.
+    const settled = Promise.allSettled([netlifySubmit, mailchimpSubmit]);
+    const timeout = new Promise((resolve) => setTimeout(resolve, 4000));
+    Promise.race([settled, timeout]).then(() => revealGuide(guideName));
   });
 }
 

@@ -1373,6 +1373,18 @@ section:not([class]):nth-of-type(even) {
   font-weight: 600;
 }
 
+.guide-modal-success .btn {
+  width: 100%;
+  justify-content: center;
+  margin: 1rem 0 0.9rem;
+}
+
+.guide-modal-note {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--charcoal-soft);
+}
+
 /* Success stories archive
    ========================================================================== */
 
