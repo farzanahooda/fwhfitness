@@ -96,6 +96,20 @@ if (contactForm && contactSuccess) {
   submitFormInline(contactForm, contactSuccess);
 }
 
+// Bot guards for the forms that write to Mailchimp.
+// The markup honeypots are only checked server-side by Netlify, so without this
+// a bot that fills every field still gets subscribed. Detection fails silently -
+// the form shows its normal success state so the bot learns nothing.
+const PAGE_LOADED_AT = Date.now();
+const MIN_FILL_SECONDS = 2;
+
+const looksAutomated = (form) => {
+  const honeypot = form.querySelector('input[name="bot-field"]');
+  if (honeypot && honeypot.value.trim() !== "") return true;
+  if ((Date.now() - PAGE_LOADED_AT) / 1000 < MIN_FILL_SECONDS) return true;
+  return false;
+};
+
 // Mailchimp JSONP subscribe (bypasses CORS, no page navigation)
 const MAILCHIMP_U = "7971fbcca33355c07e3bf1b6a";
 const MAILCHIMP_ID = "2603f2cdde";
@@ -140,6 +154,13 @@ const newsletterSuccess = document.getElementById("newsletterSuccess");
 if (newsletterForm && newsletterSuccess) {
   newsletterForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    if (looksAutomated(newsletterForm)) {
+      newsletterForm.hidden = true;
+      newsletterSuccess.hidden = false;
+      return;
+    }
+
     const data = new FormData(newsletterForm);
     const email = data.get("email");
 
@@ -201,6 +222,13 @@ if (guideModal) {
 
   guideForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    if (looksAutomated(guideForm)) {
+      guideForm.hidden = true;
+      guideSuccess.hidden = false;
+      return;
+    }
+
     const data = new FormData(guideForm);
     const email = data.get("email");
     const guideName = guideFieldValue.value;
