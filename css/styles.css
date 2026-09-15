@@ -1070,6 +1070,18 @@ section:not([class]):nth-of-type(even) {
   padding-top: 130px;
 }
 
+/* Titles that wrap to three or more lines would spill up over the nav inside the
+   fixed-height banner, so these banners grow with their content instead */
+.post-hero-banner.post-hero-long {
+  height: auto;
+  min-height: max(46vh, 320px);
+}
+
+.post-hero-banner.post-hero-long .container {
+  height: auto;
+  min-height: inherit;
+}
+
 .post-hero-banner .post-category {
   color: var(--gold-light);
 }
@@ -1531,5 +1543,222 @@ section:not([class]):nth-of-type(even) {
 
   .story-grid {
     columns: 1;
+  }
+}
+
+/* Article infographic: luteal phase (built in-page so it uses the site palette and stays legible on mobile)
+   ========================================================================== */
+
+.post-body-inner blockquote {
+  margin: 0 0 1.2em;
+  padding: 0.2em 0 0.2em 1.2em;
+  border-left: 2px solid var(--gold);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  color: var(--teal);
+}
+
+.post-body-inner a:not(.post-back-link) {
+  color: var(--gold-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cycle-infographic {
+  width: min(1100px, calc(100vw - 48px));
+  margin: 2.8rem 0 3.2rem calc(50% - min(550px, 50vw - 24px));
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.cycle-band {
+  display: block;
+  padding: 2.4rem 2rem;
+}
+
+.cycle-band-title {
+  background: var(--teal);
+}
+
+.cycle-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--white);
+}
+
+.cycle-divider {
+  display: block;
+  width: 90px;
+  height: 2px;
+  margin: 1rem auto 0;
+  background: var(--gold);
+}
+
+.cycle-band-happening {
+  background: var(--ivory);
+}
+
+.cycle-band-support {
+  background: var(--champagne);
+}
+
+.cycle-section-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: var(--teal);
+  margin-bottom: 1.6rem;
+}
+
+.cycle-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cycle-card {
+  flex: 1 1 180px;
+  max-width: 230px;
+  background: var(--white);
+  border: 1px solid rgba(185, 134, 58, 0.22);
+  border-radius: var(--radius);
+  padding: 1.8rem 1rem 1.6rem;
+}
+
+.cycle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: var(--champagne);
+}
+
+.cycle-icon svg {
+  width: 36px;
+  height: 36px;
+  fill: none;
+  stroke: var(--gold-deep);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cycle-card-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: var(--teal);
+  margin-bottom: 0.7rem;
+}
+
+.post-body-inner .cycle-infographic ul {
+  margin: 0;
+  padding: 0;
+}
+
+.post-body-inner .cycle-infographic ul li {
+  padding-left: 0;
+  margin-bottom: 0.25em;
+  color: var(--charcoal-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.post-body-inner .cycle-infographic ul li::before {
+  content: none;
+}
+
+.post-body-inner .cycle-infographic .cycle-checks {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center;
+  gap: 0.9rem 2.2rem;
+  text-align: left;
+}
+
+.post-body-inner .cycle-infographic .cycle-checks li {
+  position: relative;
+  padding-left: 2.1em;
+  margin: 0;
+  color: var(--charcoal);
+  font-size: 1rem;
+}
+
+.post-body-inner .cycle-infographic .cycle-checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.45em;
+  height: 1.45em;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--gold-deep) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center / 62% no-repeat;
+}
+
+.cycle-band-remember {
+  background: var(--teal);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  padding: 1.3rem 2rem;
+}
+
+.cycle-remember-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--gold-light);
+  margin-right: 0.35em;
+}
+
+@media (max-width: 760px) {
+  .cycle-band {
+    padding: 2rem 1.1rem;
+  }
+
+  .cycle-card {
+    flex-basis: 140px;
+  }
+
+  .post-body-inner .cycle-infographic .cycle-checks {
+    grid-template-columns: repeat(2, auto);
+    gap: 0.8rem 1.4rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .cycle-card {
+    flex-basis: 100%;
+    max-width: none;
+    padding: 1.4rem 1rem 1.2rem;
+  }
+
+  .cycle-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.7rem;
+  }
+
+  .cycle-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .post-body-inner .cycle-infographic .cycle-checks {
+    grid-template-columns: auto;
   }
 }
