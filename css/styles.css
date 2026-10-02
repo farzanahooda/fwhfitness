@@ -1261,6 +1261,24 @@ section:not([class]):nth-of-type(even) {
   margin-bottom: 1rem;
 }
 
+.brands-section {
+  margin-top: 4.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(1, 69, 76, 0.1);
+}
+
+.brands-section h2 {
+  text-align: center;
+  margin-bottom: 0.4em;
+}
+
+.affiliate-note {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--charcoal-soft);
+}
+
 .free-resource-grid .resource-card .resource-cover {
   aspect-ratio: 1131 / 1600;
 }
