@@ -196,6 +196,7 @@ section:not([class]):nth-of-type(even) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .brand {
@@ -251,6 +252,7 @@ section:not([class]):nth-of-type(even) {
 }
 
 .brand-text {
+  white-space: nowrap;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.55rem;
@@ -270,7 +272,7 @@ section:not([class]):nth-of-type(even) {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1311,6 +1313,98 @@ section:not([class]):nth-of-type(even) {
   color: var(--teal);
 }
 
+/* Brands I love
+   ========================================================================== */
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid rgba(1, 69, 76, 0.08);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 2.4rem 2.2rem 2.4rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.brand-card .num {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6em;
+}
+
+.brand-card .eyebrow {
+  margin-bottom: 0.4em;
+}
+
+.brand-card h3 {
+  font-size: 2rem;
+  margin-bottom: 0.4em;
+}
+
+.brand-card p {
+  color: var(--charcoal-soft);
+  font-size: 0.96rem;
+  flex: 1;
+  margin-bottom: 1.6em;
+}
+
+.brand-offer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.6rem;
+  background: var(--ivory);
+  border-left: 2px solid var(--gold);
+}
+
+.brand-offer-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold-deep);
+}
+
+.brand-offer-code {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  white-space: nowrap;
+}
+
+.brand-card .btn {
+  align-self: flex-start;
+}
+
+.affiliate-note {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--charcoal-soft);
+}
+
 /* Free guide modal
    ========================================================================== */
 
@@ -1455,19 +1549,8 @@ section:not([class]):nth-of-type(even) {
   }
 }
 
-@media (max-width: 760px) {
-  section {
-    padding: 3.8rem 0;
-  }
-
-  .hero-nav {
-    display: none;
-  }
-
-  .site-header {
-    transform: none;
-  }
-
+/* Collapse the nav into the menu button before its links run out of room */
+@media (max-width: 1240px) {
   .nav-toggle {
     display: block;
   }
@@ -1478,7 +1561,9 @@ section:not([class]):nth-of-type(even) {
     background: var(--teal);
     flex-direction: column;
     justify-content: center;
-    gap: 28px;
+    gap: 22px;
+    padding: 96px 0 32px;
+    overflow-y: auto;
     transform: translateY(-100%);
     transition: transform 0.28s ease;
   }
@@ -1520,12 +1605,31 @@ section:not([class]):nth-of-type(even) {
   .site-header.nav-open .nav-links a {
     color: var(--white) !important;
   }
+}
+
+@media (max-width: 760px) {
+  section {
+    padding: 3.8rem 0;
+  }
+
+  .hero-nav {
+    display: none;
+  }
+
+  .site-header {
+    transform: none;
+  }
 
   .services-grid,
   .testimonial-grid,
   .post-grid,
-  .resource-grid {
+  .resource-grid,
+  .brand-grid {
     grid-template-columns: 1fr;
+  }
+
+  .brand-card {
+    padding: 2rem 1.6rem;
   }
 
   .form-row {
