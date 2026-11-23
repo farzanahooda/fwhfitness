@@ -285,6 +285,11 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 // Testimonials - edit this list to add, remove or swap out reviews.
 const testimonials = [
   {
+    quote: "In just 12 weeks, I've lost weight, my energy levels have improved immensely and I'm finally sleeping through the night. I didn't just lose weight - I got my energy, strength and confidence back",
+    name: "Fatima Panjwani",
+    slug: "fatima-panjwani",
+  },
+  {
     quote: "Farzana is more than just an amazing, inspirational trainer - she's been my nutritionist, life coach, therapist and cheerleader. The best investment ever.",
     name: "Liz Burchett",
     slug: "liz-burchett",
@@ -333,11 +338,6 @@ const testimonials = [
     quote: "If you're looking for a trainer who truly cares about your well-being and provides comprehensive, compassionate guidance, and a programme that truly works, this is the one. Thank you Farzana for everything you've done so far and continue to do for me, you're a star",
     name: "Farhana Manekia",
     slug: "farhana-manekia",
-  },
-  {
-    quote: "Amazing personal and thoughtful coaching by our excellent Farzana, who does this with great passion. We are so lucky to have you.",
-    name: "Fatim Jaffer",
-    slug: "fatim-jaffer",
   },
   {
     quote: "I contacted Farzana - she has changed everything. Every aspect of my health has been addressed through nutrition, exercise and mental wellbeing. I am healthier, leaner and stronger than I have been in years.",
